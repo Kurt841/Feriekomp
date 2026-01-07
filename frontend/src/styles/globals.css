@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  @apply min-h-screen bg-gray-900 text-gray-100 font-sans antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #18181b;
+}

@@ -1,0 +1,109 @@
+# Produksjon compose-fil. Krever en .env med secrets og origins.
+# 
+# MERK: Hvis du bruker Neon eller annen managed PostgreSQL, kommenter ut 'db' servicen
+# og sett DATABASE_URL i .env-filen til din Neon connection string.
+# Eksempel: DATABASE_URL=postgresql://user:pass@ep-xxx-xxx.region.neon.tech/dbname?sslmode=require
+#
+services:
+  # PostgreSQL Database (valgfritt - kun hvis ikke bruker managed PostgreSQL som Neon)
+  # Fjern kommentar hvis du vil kjøre PostgreSQL i Docker i stedet for Neon
+  # db:
+  #   image: postgres:16-alpine
+  #   container_name: feriekomp-db
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_DB: ${POSTGRES_DB:-feriekompensasjon}
+  #     POSTGRES_USER: ${POSTGRES_USER:-feriekomp}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+  #     POSTGRES_INITDB_ARGS: "--auth-local=md5 --auth-host=md5 --locale=C"
+  #     LC_ALL: C
+  #     LANG: C
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #     - ./backend/docker/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-feriekomp}"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  # FastAPI Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: feriekomp-backend
+    restart: unless-stopped
+    environment:
+      - ENV=production
+      - AUTO_CREATE_DB=false
+      - DATABASE_URL=${DATABASE_URL:?Set DATABASE_URL in .env (e.g. Neon connection string)}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:?Set ALLOWED_ORIGINS in .env}
+      - PORT=5000
+      - ENABLE_AI=${ENABLE_AI:-false}
+      - RATE_LIMIT_STORAGE_URI=${RATE_LIMIT_STORAGE_URI:-memory://}
+      - TRUST_PROXY=${TRUST_PROXY:-true}
+      - WEB_CONCURRENCY=${WEB_CONCURRENCY:-2}
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+    # Fjern kommentar over hvis du bruker lokal PostgreSQL container
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-/api}
+        NEXT_PUBLIC_ENABLE_AI_EXPLANATION: ${NEXT_PUBLIC_ENABLE_AI_EXPLANATION:-false}
+    container_name: feriekomp-frontend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-/api}
+      - NEXT_PUBLIC_ENABLE_AI_EXPLANATION=${NEXT_PUBLIC_ENABLE_AI_EXPLANATION:-false}
+      - API_HOST=backend
+      - API_PORT=5000
+    depends_on:
+      - backend
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Nginx Reverse Proxy
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: feriekomp-nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    depends_on:
+      - backend
+      - frontend
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# volumes:
+#   postgres_data:
+#     driver: local
+# Fjern kommentar over hvis du bruker lokal PostgreSQL container
+
+networks:
+  default:
+    name: feriekomp-network

@@ -1,0 +1,44 @@
+{
+  "name": "Feriekompensasjon",
+  "description": "Feriekompensasjon kalkulator med FastAPI backend",
+  "repository": "https://github.com/26zl/feriekomp",
+  "keywords": ["python", "fastapi", "feriekompensasjon", "uvicorn"],
+  "env": {
+    "ENV": {
+      "description": "Environment mode",
+      "value": "production"
+    },
+    "DATABASE_URL": {
+      "description": "PostgreSQL database URL",
+      "required": true
+    },
+    "AUTO_CREATE_DB": {
+      "description": "Auto-create DB tables on startup (disable in production)",
+      "value": "false"
+    },
+    "ALLOWED_ORIGINS": {
+      "description": "Comma-separated list of allowed CORS origins",
+      "value": "URL for frontend app"
+    },
+    "NEXT_PUBLIC_API_BASE_URL": {
+      "description": "Public API base URL",
+      "value": "URL for frontend app"
+    },
+    "RATE_LIMIT_STORAGE_URI": {
+      "description": "Rate limit storage backend (use Redis for multiple instances)",
+      "value": "memory://"
+    },
+    "TRUST_PROXY": {
+      "description": "Trust X-Forwarded-* headers when behind a proxy",
+      "value": "true"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "Gunicorn worker count",
+      "value": "2"
+    }
+  },
+  "buildpacks": [
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/python" }
+  ]
+}
